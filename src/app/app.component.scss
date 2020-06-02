@@ -1,0 +1,36 @@
+.card-container {
+ margin: 0;
+ .card {
+  min-width: 12rem;
+  min-height: 15rem;
+  margin: .5rem .375rem;
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+  transition: 0.3s all ease;
+  cursor: pointer;
+  &:hover {
+   box-shadow: 0 0 15px rgba(0,0,0,.2);
+  }
+  &__image {
+   margin-bottom: auto;
+   img {
+    width: 100%;
+   }
+  }
+  &__quantity {
+   color: #777;
+   font-size: .8rem;
+   margin: .2rem 0;
+  }
+  &__series {
+   font-weight: 500;
+   text-transform: uppercase;
+   margin: .2rem 0;
+  }
+  &__price {
+   font-size: 1.2rem;
+  }
+ }
+}
