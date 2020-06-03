@@ -5,17 +5,84 @@
 .grey {
  color: #ABABAB;
 }
-.sm-btn {
+.dark {
+ color: #212529;
+}
+
+.btn {
  width: fit-content;
  margin: .5rem 0;
  padding: .2rem 1rem;
  background-color: #FF6A00;
  color: #FFF;
- border-radius: 1.5rem;
  transition: .3s all ease;
+ white-space: nowrap;
  &:hover {
   opacity: .75;
  }
+}
+.sm-btn {
+ border-radius: 1.5rem;
+}
+.md-btn {
+ padding: .5rem 3rem;
+}
+
+
+// TODO: Организовать и вынести в отдельное место
+input[type='range'] {
+ width: 100%;
+ overflow: hidden;
+ -webkit-appearance: none;
+ background-color: #E4E4E4;
+ outline: none;
+ cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+ height: .25rem;
+ -webkit-appearance: none;
+ color: #FF6A00;
+}
+
+input[type='range']::-webkit-slider-thumb {
+ width: 1rem;
+ height: 1rem;
+ border-radius: .5rem;
+ -webkit-appearance: none;
+ cursor: pointer;
+ background: #FF6A00;
+ box-shadow: -10rem 0 0 10rem #FF6A00;
+}
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+ background-color: #FF6A00; 
+}
+input[type="range"]::-moz-range-track {  
+ background-color: #9a905d;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+ background-color: #FF6A00; 
+}
+input[type="range"]::-ms-fill-upper {  
+ background-color: #9a905d;
+}
+
+
+
+.item-name {
+ color: #ABABAB;
+ font-size: .8rem;
+ white-space: nowrap;
+}
+.item-value {
+ margin-top: auto;
+ color: #ABABAB;
+ font-size: 1.4rem;
+ font-weight: 500;
+ white-space: nowrap;
 }
 
 .container {
@@ -114,18 +181,6 @@
 }
 .feature-items__item {
  padding: .5rem;
- .item-name {
-  color: #ABABAB;
-  font-size: .8rem;
-  white-space: nowrap;
- }
- .item-value {
-  margin-top: auto;
-  color: #ABABAB;
-  font-size: 1.4rem;
-  font-weight: 500;
-  white-space: nowrap;
- }
 }
 
 .info-card__price {
@@ -134,5 +189,39 @@
   color: #212529;
   font-size: 1.9rem;
   font-weight: 500;
+ }
+}
+
+.settings {
+ padding: 2.5rem;
+ background-color: #FFF;
+ .info-panel {
+  &__title {
+   color: #ABABAB;
+   text-transform: uppercase;
+  }
+ }
+ &__item {
+  padding: 1rem;
+  margin: .5rem;
+  border: #E4E4E4 1px solid;
+  border-radius: .5rem .5rem 0 0;
+  .item-range {
+   margin: 0 -1rem -1.5rem;
+  }
+ }
+ .feature-items {
+  margin: 1rem 0;
+  &__item {
+   padding: 1.5rem;
+  }
+ }
+}
+@include media-breakpoint-down(sm) {
+ .settings {
+  padding: 2.5rem 0;
+  .info-panel__title h5 {
+   font-size: 1rem;
+  }
  }
 }
