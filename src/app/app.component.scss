@@ -1,9 +1,29 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+.grey {
+ color: #ABABAB;
+}
+.sm-btn {
+ width: fit-content;
+ margin: .5rem 0;
+ padding: .2rem 1rem;
+ background-color: #FF6A00;
+ color: #FFF;
+ border-radius: 1.5rem;
+ transition: .3s all ease;
+ &:hover {
+  opacity: .75;
+ }
+}
+
 .container {
  margin-top: 2.5rem;
 }
 
 .info-panel {
- &__quantity {
+ &__subtitle {
   display: inline-block;
   margin: 0 .5rem;
   color: #ABABAB;
@@ -11,13 +31,22 @@
  }
  &__link {
   a {
-   color: #FF9900;
+   color: #FF6A00;
    text-decoration: none;
   }
  }
 }
+@include media-breakpoint-down(sm) {
+ .info-panel__title h4 {
+  font-size: 1.2rem;
+ }
+ .info-panel__subtitle {
+  font-size: 1rem;
+ }
+}
 
-.card-container {
+
+.card-wrapper {
  .col-12 {
   transition: 0.3s all ease;
  }
@@ -26,6 +55,7 @@
   min-height: 15rem;
   margin: .5rem -.25rem;
   padding: 1rem;
+  background-color: #FFF;
   border: none;
   border-radius: .5rem;
   box-shadow: 0 0 15px rgba(0,0,0,.1);
@@ -53,5 +83,56 @@
   &__price {
    font-size: 1.2rem;
   }
+ }
+}
+
+.form-credit {
+ margin: 5rem 0;
+ .info-card {
+  height: auto;
+  margin: 2.5rem 0;
+  background-color: #FFF;
+  border-radius: .5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  &__image {
+   height: 100%;
+   padding: 0;
+   img {
+    width: 100%;
+    border-radius: .5rem;
+   }
+  }
+  &__feature {
+   padding: 1rem;
+  }
+ }
+}
+
+.feature-name {
+ padding: .5rem;
+ font-weight: 500;
+}
+.feature-items__item {
+ padding: .5rem;
+ .item-name {
+  color: #ABABAB;
+  font-size: .8rem;
+  white-space: nowrap;
+ }
+ .item-value {
+  margin-top: auto;
+  color: #ABABAB;
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: nowrap;
+ }
+}
+
+.info-card__price {
+ padding: 1rem;
+ .item-value {
+  color: #212529;
+  font-size: 1.9rem;
+  font-weight: 500;
  }
 }
