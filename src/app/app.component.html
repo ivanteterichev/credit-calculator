@@ -16,7 +16,7 @@
 
  <div class="card-wrapper row justify-content-center">
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[0])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[0]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-1.png" alt="">
     </div>
@@ -32,7 +32,7 @@
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[1])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[1]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-2.png" alt="">
     </div>
@@ -48,7 +48,7 @@
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[2])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[2]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-3.png" alt="">
     </div>
@@ -64,7 +64,7 @@
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[3])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[3]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-1.png" alt="">
     </div>
@@ -80,7 +80,7 @@
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[4])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[4]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-2.png" alt="">
     </div>
@@ -96,7 +96,7 @@
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[5])">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[5]); calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
     <div class="card__image">
      <img src="/assets/images/bmw-3.png" alt="">
     </div>
@@ -192,7 +192,7 @@
         <span class="dark">{{myForm.value.deposit}}</span> ₽ <span class="grey">{{((myForm.value.deposit / carPrice) * 100).toFixed(1)}}%</span>
        </div>
        <div class="item-range">
-        <input type="range" name="deposit" [(ngModel)]="minDeposit" min="{{minDeposit}" max="{{carPrice * .75}}" value="{{carPrice}}" step="{{carPrice * .05}}">
+        <input type="range" name="deposit" [ngModel]="minDeposit" min="{{minDeposit}" max="{{carPrice * .75}}" value="{{carPrice}}" step="{{carPrice * .05}}" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
        </div>
       </div>
      </div>
@@ -202,10 +202,10 @@
         Готов платить в месяц
        </div>
        <div class="item-value">
-        <span class="dark">15 000</span> ₽
+        <span class="dark">до {{myForm.value.payment}}</span> ₽
        </div>
        <div class="item-range">
-        <input type="range" name="deposit2" min="5000" max="100000" value="15000" step="1000">
+        <input type="range" name="payment" [ngModel]="minPayment" min="{{minPayment}}" max="{{maxPayment}}" value="{{minPayment}}" step="1000">
        </div>
       </div>
      </div>
@@ -215,10 +215,10 @@
         Срок кредита
        </div>
        <div class="item-value">
-        <span class="dark">60</span> месяцев
+        <span class="dark">{{myForm.value.period}}</span> месяцев
        </div>
        <div class="item-range">
-        <input type="range" name="deposit3" min="1" max="60" value="24" step="1">
+        <input type="range" name="period" [ngModel]="period" min="60" max="240" value="24" step="12" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
        </div>
       </div>
      </div>
@@ -248,7 +248,7 @@
        Платеж в месяц
       </div>
       <div class="item-value">
-       <span class="dark">от 8 890 ₽/мес</span>
+       <span class="dark">от {{paymentPerMounth}} ₽/мес</span>
       </div>
      </div>
     </div>
