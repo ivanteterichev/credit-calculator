@@ -16,7 +16,7 @@
 
  <div class="card-wrapper row justify-content-center">
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[0])">
     <div class="card__image">
      <img src="/assets/images/bmw-1.png" alt="">
     </div>
@@ -27,12 +27,12 @@
      3 СЕРИИ
     </div>
     <div class="card__price">
-     от 1 970 000 ₽
+     от {{carPrices[0]}} ₽
     </div>
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[1])">
     <div class="card__image">
      <img src="/assets/images/bmw-2.png" alt="">
     </div>
@@ -43,12 +43,12 @@
      5 СЕРИИ
     </div>
     <div class="card__price">
-     от 2 370 000 ₽
+     от {{carPrices[1]}} ₽
     </div>
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[2])">
     <div class="card__image">
      <img src="/assets/images/bmw-3.png" alt="">
     </div>
@@ -59,12 +59,12 @@
      7 СЕРИИ
     </div>
     <div class="card__price">
-     от 3 670 000 ₽
+     от {{carPrices[2]}} ₽
     </div>
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[3])">
     <div class="card__image">
      <img src="/assets/images/bmw-1.png" alt="">
     </div>
@@ -75,12 +75,12 @@
      3 СЕРИИ
     </div>
     <div class="card__price">
-     от 1 970 000 ₽
+     от {{carPrices[3]}} ₽
     </div>
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[4])">
     <div class="card__image">
      <img src="/assets/images/bmw-2.png" alt="">
     </div>
@@ -91,12 +91,12 @@
      5 СЕРИИ
     </div>
     <div class="card__price">
-     от 2 370 000 ₽
+     от {{carPrices[4]}} ₽
     </div>
    </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column">
+   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[5])">
     <div class="card__image">
      <img src="/assets/images/bmw-3.png" alt="">
     </div>
@@ -107,7 +107,7 @@
      7 СЕРИИ
     </div>
     <div class="card__price">
-     от 3 670 000 ₽
+     от {{carPrices[5]}} ₽
     </div>
    </div>
   </div>  
@@ -167,7 +167,7 @@
       Стоимость автомобиля
      </div>
      <div class="item-value">
-      5 131 000 ₽
+      {{carPrice}} ₽
      </div>
     </div>
    </div>
@@ -181,47 +181,49 @@
      </div>
     </div>
    </div>
-   <div class="row">
-    <div class="col-12 col-lg-4">
-     <div class="settings__item">
-      <div class="item-name">
-       Первоначальный взнос
+   <form #myForm="ngForm" novalidate>
+    <div class="row">
+     <div class="col-12 col-lg-4">
+      <div class="settings__item">
+       <div class="item-name">
+        Первоначальный взнос
+       </div>
+       <div class="item-value">
+        <span class="dark">{{myForm.value.deposit}}</span> ₽ <span class="grey">{{((myForm.value.deposit / carPrice) * 100).toFixed(1)}}%</span>
+       </div>
+       <div class="item-range">
+        <input type="range" name="deposit" [(ngModel)]="minDeposit" min="{{minDeposit}" max="{{carPrice * .75}}" value="{{carPrice}}" step="{{carPrice * .05}}">
+       </div>
       </div>
-      <div class="item-value">
-       <span class="dark">160 000</span> ₽
+     </div>
+     <div class="col-12 col-lg-4">
+      <div class="settings__item">
+       <div class="item-name">
+        Готов платить в месяц
+       </div>
+       <div class="item-value">
+        <span class="dark">15 000</span> ₽
+       </div>
+       <div class="item-range">
+        <input type="range" name="deposit2" min="5000" max="100000" value="15000" step="1000">
+       </div>
       </div>
-      <div class="item-range">
-       <input type="range" name="deposit" min="100000" max="10000000" value="160000" step="25000">
+     </div>
+     <div class="col-12 col-lg-4">
+      <div class="settings__item">
+       <div class="item-name">
+        Срок кредита
+       </div>
+       <div class="item-value">
+        <span class="dark">60</span> месяцев
+       </div>
+       <div class="item-range">
+        <input type="range" name="deposit3" min="1" max="60" value="24" step="1">
+       </div>
       </div>
      </div>
     </div>
-    <div class="col-12 col-lg-4">
-     <div class="settings__item">
-      <div class="item-name">
-       Готов платить в месяц
-      </div>
-      <div class="item-value">
-       <span class="dark">15 000</span> ₽
-      </div>
-      <div class="item-range">
-       <input type="range" name="deposit" min="5000" max="100000" value="15000" step="1000">
-      </div>
-     </div>
-    </div>
-    <div class="col-12 col-lg-4">
-     <div class="settings__item">
-      <div class="item-name">
-       Срок кредита
-      </div>
-      <div class="item-value">
-       <span class="dark">60</span> месяцев
-      </div>
-      <div class="item-range">
-       <input type="range" name="deposit" min="1" max="60" value="24" step="1">
-      </div>
-     </div>
-    </div>
-   </div>
+   </form>
  
    <div class="feature-items row">
     <div class="col-12 col-lg-8 d-flex flex-wrap">
