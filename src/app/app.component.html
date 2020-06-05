@@ -205,7 +205,7 @@
         <span class="dark">до {{myForm.value.payment}}</span> ₽
        </div>
        <div class="item-range">
-        <input type="range" name="payment" [ngModel]="minPayment" min="{{minPayment}}" max="{{maxPayment}}" value="{{minPayment}}" step="1000">
+        <input type="range" name="payment" [ngModel]="minPayment" min="{{minPayment}}" max="{{maxPayment}}" value="{{defaultPayment}}" step="1000" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
        </div>
       </div>
      </div>
@@ -218,7 +218,7 @@
         <span class="dark">{{myForm.value.period}}</span> месяцев
        </div>
        <div class="item-range">
-        <input type="range" name="period" [ngModel]="period" min="60" max="240" value="24" step="12" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
+        <input type="range" name="period" [ngModel]="maxPeriod - (((myForm.value.payment - defaultPayment) / 1000) * 12)" min="60" max="{{maxPeriod}}" value="{{maxPeriod - (((myForm.value.payment - defaultPayment) / 1000) * 12)}}" step="12" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
        </div>
       </div>
      </div>
