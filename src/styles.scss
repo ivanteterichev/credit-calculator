@@ -1,6 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
 body {
- background-color: #FAFAFA;
+ background-color: #FAFAFA !important;
+}
+.modal-dialog {
+ top: 20%;
+ .modal-content {
+  padding: 0 0 2rem;
+ }
+}
+@include media-breakpoint-down(sm) {
+ .modal-dialog {
+  top: 0;
+ }
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

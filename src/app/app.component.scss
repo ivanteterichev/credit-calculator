@@ -17,6 +17,8 @@
  color: #FFF;
  transition: .3s all ease;
  white-space: nowrap;
+ outline: none;
+ box-shadow: none;
  &:hover {
   opacity: .75;
  }
@@ -26,6 +28,23 @@
 }
 .md-btn {
  padding: .5rem 3rem;
+}
+
+button.close {
+ outline: none;
+}
+.modal-header,
+.modal-footer {
+ border: none;
+}
+.modal-body {
+ text-align: center;
+ &__image {
+  margin: .5rem 0 2rem;
+  img {
+   width: 25%;
+  }
+ }
 }
 
 

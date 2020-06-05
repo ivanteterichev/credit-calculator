@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -29,4 +31,12 @@ export class AppComponent {
   // calcNewPayment(valuePayment, valuePeriod) {
   //   this.newPayment = valuePayment + (((this.pseudoMaxPeriod - valuePeriod) / 12) * 1000);
   // }
+
+  constructor(private modalService: NgbModal) {}
+
+  open(content, sendDeposit, sendPayment) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    // console.log('Первоначальный взнос: ' + sendDeposit + ' ₽');
+    // console.log('Желаемый ежемесячный платеж: ' + sendPayment + ' ₽/мес');
+  }
 }
