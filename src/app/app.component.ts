@@ -33,7 +33,7 @@ export class AppComponent {
 
   constructor(private modalService: NgbModal) {}
 
-  open(content, sendCarPrice, sendDeposit, sendPayment, sendPeriod, sendPaymentPerMounth) {
+  openCallbackForm(content, sendCarPrice, sendDeposit, sendPayment, sendPeriod, sendPaymentPerMounth) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
     console.log('Стоимость автомобиля: ' + sendCarPrice + ' ₽');
     console.log('Первоначальный взнос: ' + sendDeposit + ' ₽');
@@ -43,4 +43,7 @@ export class AppComponent {
     console.log('Eжемесячный платеж: ' + sendPaymentPerMounth + ' ₽/мес');
     console.log('Сумма переплат: ' + ((this.paymentPerMounth * sendPeriod) - (this.carPrice - sendDeposit)) + ' ₽');
   }
+  // openCreditForm(content) {
+  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  // }
 }

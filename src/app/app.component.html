@@ -254,7 +254,7 @@
     </div>
     <div class="col-12 col-lg-4">
      <div class="feature-items__item">
-      <button class="btn md-btn" (click)="open(content, carPrice, myForm.value.deposit, myForm.value.payment, myForm.value.period, paymentPerMounth)">Отправить заявку</button>
+      <button class="btn md-btn" (click)="openCallbackForm(callbackForm, carPrice, myForm.value.deposit, myForm.value.payment, myForm.value.period, paymentPerMounth)">Отправить заявку</button>
      </div>
     </div>
    </div>
@@ -265,7 +265,7 @@
 </div>
 
 
-<ng-template #content let-modal>
+<ng-template #callbackForm let-modal>
   <div class="modal-header">
     <!-- <h4 class="modal-title" id="modal-basic-title">Profile update</h4> -->
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
@@ -282,4 +282,17 @@
   <div class="modal-footer d-flex justify-content-center">
     <button type="button" class="btn md-btn" (click)="modal.close()">Вернуться в каталог</button>
   </div>
+</ng-template>
+
+<ng-template #creditForm let-modal>
+  <div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title">Profile update</h4> -->
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Спасибо за обращение и загляните в консольку!
+  </div>
+
 </ng-template>
