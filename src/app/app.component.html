@@ -247,7 +247,7 @@
               Сумма выплат
               </div>
               <div class="item-value">
-              от 141 579 ₽
+              {{(paymentPerMounth * myForm.value.period) - (carPrice - myForm.value.deposit)}}&nbsp;₽
               </div>
             </div>
             <div class="feature-items__item d-flex flex-column">
@@ -263,7 +263,7 @@
               Платеж в месяц
               </div>
               <div class="item-value">
-              <span class="dark">от {{paymentPerMounth}} ₽/мес</span>
+              <span class="dark">{{paymentPerMounth}} ₽/мес</span>
               </div>
             </div>
             </div>
