@@ -197,8 +197,11 @@
               <div class="item-name">
                 Первоначальный взнос
               </div>
-              <div class="item-value">
-                <span class="dark">{{myForm.value.deposit}}</span> ₽ <span class="grey">{{((myForm.value.deposit / carPrice) * 100).toFixed(1)}}%</span>
+              <div class="item-value d-flex">
+                <span class="dark">{{myForm.value.deposit}}</span>&nbsp;₽ 
+                <div class="item-value_converted">
+                  <span class="grey">{{((myForm.value.deposit / carPrice) * 100).toFixed(1)}}%</span>
+                </div>
               </div>
               <div class="item-range">
                 <input type="range" name="deposit" [ngModel]="minDeposit" min="{{minDeposit}" max="{{carPrice * .75}}" value="{{carPrice}}" step="{{carPrice * .05}}" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
@@ -223,8 +226,11 @@
               <div class="item-name">
                 Срок кредита
               </div>
-              <div class="item-value">
-                <span class="dark">{{myForm.value.period}}</span> месяцев
+              <div class="item-value d-flex">
+                <span class="dark">{{myForm.value.period}}</span>&nbsp;месяцев
+                <div class="item-value_converted">
+                  <span class="grey">{{(myForm.value.period / 12).toFixed(0)}}</span> лет
+                </div>
               </div>
               <div class="item-range">
                 <input type="range" name="period" [ngModel]="maxPeriod - (((myForm.value.payment - defaultPayment) / 1000) * 12)" min="60" max="{{maxPeriod}}" value="{{maxPeriod - (((myForm.value.payment - defaultPayment) / 1000) * 12)}}" step="12" (change)="calcCredit(carPrice, myForm.value.deposit, myForm.value.period)">
