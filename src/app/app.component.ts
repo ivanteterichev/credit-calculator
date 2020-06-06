@@ -43,7 +43,7 @@ export class AppComponent {
     console.log('Eжемесячный платеж: ' + sendPaymentPerMounth + ' ₽/мес');
     console.log('Сумма переплат: ' + ((this.paymentPerMounth * sendPeriod) - (this.carPrice - sendDeposit)) + ' ₽');
   }
-  // openCreditForm(content) {
-  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-  // }
+  openCreditForm(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
 }
