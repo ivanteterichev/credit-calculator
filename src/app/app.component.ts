@@ -19,9 +19,8 @@ export class AppComponent {
   pseudoMaxPeriod = 360;
   carPrices = [1970000, 2370000, 3670000, 1970000, 2370000, 3670000];
   paymentPerMounth = null;
-  // newPayment = 10000;
+  interestRate = .118;
   outputPrice(price) {
-    console.log(price);
     this.carPrice = price;
     this.minDeposit = price * .1;
   };
@@ -34,9 +33,14 @@ export class AppComponent {
 
   constructor(private modalService: NgbModal) {}
 
-  open(content, sendDeposit, sendPayment) {
+  open(content, sendCarPrice, sendDeposit, sendPayment, sendPeriod, sendPaymentPerMounth) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-    // console.log('Первоначальный взнос: ' + sendDeposit + ' ₽');
-    // console.log('Желаемый ежемесячный платеж: ' + sendPayment + ' ₽/мес');
+    console.log('Стоимость автомобиля: ' + sendCarPrice + ' ₽');
+    console.log('Первоначальный взнос: ' + sendDeposit + ' ₽');
+    console.log('Желаемый ежемесячный платеж: ' + sendPayment + ' ₽/мес');
+    console.log('Срок кредита: ' + sendPeriod + ' мес');
+    console.log('Процентная ставка: ' + (this.interestRate * 100).toFixed(1) + '%');
+    console.log('Eжемесячный платеж: ' + sendPaymentPerMounth + ' ₽/мес');
+    console.log('Сумма переплат: ' + ((this.paymentPerMounth * sendPeriod) - (this.carPrice - sendDeposit)) + ' ₽');
   }
 }
