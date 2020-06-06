@@ -29,6 +29,11 @@
 .md-btn {
  padding: .5rem 3rem;
 }
+@include media-breakpoint-down(sm) {
+ .md-btn {
+  padding: .5rem 1rem;
+ }
+}
 
 button.close {
  outline: none;
@@ -42,7 +47,7 @@ button.close {
  &__image {
   margin: .5rem 0 2rem;
   img {
-   width: 25%;
+   width: 3rem;
   }
  }
 }
@@ -71,7 +76,7 @@ input[type='range']::-webkit-slider-thumb {
  -webkit-appearance: none;
  cursor: pointer;
  background: #FF6A00;
- box-shadow: -10rem 0 0 10rem #FF6A00;
+ box-shadow: -20rem 0 0 20rem #FF6A00;
 }
 
 /** FF*/
@@ -173,7 +178,6 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .form-credit {
- margin: 5rem 0;
  .info-card {
   height: auto;
   margin: 2.5rem 0;
@@ -191,6 +195,12 @@ input[type="range"]::-ms-fill-upper {
   &__feature {
    padding: 1rem;
   }
+  @include media-breakpoint-down(md) {
+   &__feature {
+    text-align: center;
+    align-items: center;
+   }
+  }
  }
 }
 
@@ -198,8 +208,16 @@ input[type="range"]::-ms-fill-upper {
  padding: .5rem;
  font-weight: 500;
 }
-.feature-items__item {
- padding: .5rem;
+.feature-items {
+ overflow-x: auto;
+ &__item {
+  padding: .5rem;
+ }
+}
+@include media-breakpoint-down(md) {
+ .feature-items {
+  text-align: center;
+ }
 }
 
 .info-card__price {
