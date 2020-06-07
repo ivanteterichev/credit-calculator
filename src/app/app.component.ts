@@ -43,6 +43,7 @@ export class AppComponent {
   pseudoMaxPeriod = 360;
   paymentPerMounth = null;
   interestRate = .118;
+  
   outputData(image, model, price) {
     this.carImage = image;
     this.carModel = model;

@@ -14,6 +14,7 @@
   </div>
  </div>
 
+ <!-- Карточки автомобилей -->
  <div class="card-wrapper row justify-content-center">
   <div class="col-12 col-sm-6 col-lg-4" *ngFor="let car of cars">
    <div class="card d-flex flex-column" (click)="outputData(car.image, car.model, car.price); openCreditForm(creditForm)">
@@ -33,6 +34,7 @@
   </div>
  </div>
 
+ <!-- Форма расчета кредита -->
   <ng-template #creditForm let-modal>
     <div class="modal-header">
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
@@ -196,7 +198,7 @@
 
 </div>
 
-
+<!-- Форма обратной связи -->
 <ng-template #callbackForm let-modal>
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
