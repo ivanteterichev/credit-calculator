@@ -15,6 +15,25 @@
  </div>
 
  <div class="card-wrapper row justify-content-center">
+  <div class="col-12 col-sm-6 col-lg-4" *ngFor="let car of cars">
+   <div class="card d-flex flex-column" (click)="outputPrice(car.price); openCreditForm(creditForm)">
+    <div class="card__image">
+     <img src="{{car.image}}" alt="">
+    </div>
+    <div class="card__quantity">
+     {{car.quantity}}&nbsp;авто
+    </div>
+    <div class="card__series">
+      {{car.model}}
+    </div>
+    <div class="card__price">
+     от {{car.price}} ₽
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- <div class="card-wrapper row justify-content-center">
   <div class="col-12 col-sm-6 col-lg-4">
    <div class="card d-flex flex-column" (click)="outputPrice(carPrices[0]); openCreditForm(creditForm)">
     <div class="card__image">
@@ -107,11 +126,11 @@
      7 СЕРИИ
     </div>
     <div class="card__price">
-     от {{carPrices[5]}} ₽
+     от {{prices[5]}} ₽
     </div>
    </div>
   </div>  
- </div>
+ </div> -->
 
   <ng-template #creditForm let-modal>
     <div class="modal-header">
@@ -244,7 +263,7 @@
             <div class="col-12 col-lg-8 d-flex flex-wrap justify-content-center justify-content-lg-start">
             <div class="feature-items__item d-flex flex-column">
               <div class="item-name">
-              Сумма выплат
+              Сумма переплат
               </div>
               <div class="item-value">
               {{(paymentPerMounth * myForm.value.period) - (carPrice - myForm.value.deposit)}}&nbsp;₽

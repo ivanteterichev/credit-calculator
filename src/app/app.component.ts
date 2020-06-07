@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
-
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+export class Car {
+  constructor(public image: string,
+              public quantity: number,
+              public model: string, 
+              public price: number)
+  { }
+}
 
 @Component({
   selector: 'app-root',
@@ -8,6 +15,21 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  image: string;
+  quantity: number;
+  model: string;
+  price: number;
+
+  car1 = new Car('/assets/images/bmw-1.png', 9, '3 серии', 1970000);
+  car2 = new Car('/assets/images/bmw-2.png', 6, '5 серии', 2370000);
+  car3 = new Car('/assets/images/bmw-3.png', 3, '7 серии', 3670000);
+  car4 = new Car('/assets/images/bmw-1.png', 9, '3 серии', 1970000);
+  car5 = new Car('/assets/images/bmw-2.png', 6, '5 серии', 2370000);
+  car6 = new Car('/assets/images/bmw-3.png', 3, '7 серии', 3670000);
+
+  cars: Car[] = [this.car1, this.car2, this.car3, this.car4, this.car5, this.car6];
+
   title = 'CreditCalculator';
   carPrice = 1970000;
   minDeposit = 197000;
@@ -27,9 +49,6 @@ export class AppComponent {
   calcCredit(carPrice, deposit, period) {
     this.paymentPerMounth = (((((carPrice - deposit) / (period / 12)) * 1.118)) / 12).toFixed(0);
   }
-  // calcNewPayment(valuePayment, valuePeriod) {
-  //   this.newPayment = valuePayment + (((this.pseudoMaxPeriod - valuePeriod) / 12) * 1000);
-  // }
 
   constructor(private modalService: NgbModal) {}
 
