@@ -16,7 +16,7 @@
 
  <div class="card-wrapper row justify-content-center">
   <div class="col-12 col-sm-6 col-lg-4" *ngFor="let car of cars">
-   <div class="card d-flex flex-column" (click)="outputPrice(car.price); openCreditForm(creditForm)">
+   <div class="card d-flex flex-column" (click)="outputData(car.image, car.model, car.price); openCreditForm(creditForm)">
     <div class="card__image">
      <img src="{{car.image}}" alt="">
     </div>
@@ -33,133 +33,31 @@
   </div>
  </div>
 
- <!-- <div class="card-wrapper row justify-content-center">
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[0]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-1.png" alt="">
-    </div>
-    <div class="card__quantity">
-     7 авто
-    </div>
-    <div class="card__series">
-     3 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{carPrices[0]}} ₽
-    </div>
-   </div>
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[1]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-2.png" alt="">
-    </div>
-    <div class="card__quantity">
-     5 авто
-    </div>
-    <div class="card__series">
-     5 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{carPrices[1]}} ₽
-    </div>
-   </div>
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[2]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-3.png" alt="">
-    </div>
-    <div class="card__quantity">
-     4 авто
-    </div>
-    <div class="card__series">
-     7 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{carPrices[2]}} ₽
-    </div>
-   </div>
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[3]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-1.png" alt="">
-    </div>
-    <div class="card__quantity">
-     7 авто
-    </div>
-    <div class="card__series">
-     3 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{carPrices[3]}} ₽
-    </div>
-   </div>
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[4]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-2.png" alt="">
-    </div>
-    <div class="card__quantity">
-     5 авто
-    </div>
-    <div class="card__series">
-     5 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{carPrices[4]}} ₽
-    </div>
-   </div>
-  </div>
-  <div class="col-12 col-sm-6 col-lg-4">
-   <div class="card d-flex flex-column" (click)="outputPrice(carPrices[5]); openCreditForm(creditForm)">
-    <div class="card__image">
-     <img src="/assets/images/bmw-3.png" alt="">
-    </div>
-    <div class="card__quantity">
-     4 авто
-    </div>
-    <div class="card__series">
-     7 СЕРИИ
-    </div>
-    <div class="card__price">
-     от {{prices[5]}} ₽
-    </div>
-   </div>
-  </div>  
- </div> -->
-
   <ng-template #creditForm let-modal>
     <div class="modal-header">
-      <!-- <h4 class="modal-title" id="modal-basic-title">Profile update</h4> -->
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    
       <div class="container">
         <div class="form-credit">
-
           <div class="info-panel row">
           <div class="col-12 d-flex">
             <div class="info-panel__title">
             <h4>Расчет кредита</h4>
             </div>
             <div class="info-panel__subtitle">
-            <span>Toyota Land Cruiser Comfort</span>
+            <span>{{carModel}}</span>
             </div>
           </div>
           </div>
           <div class="info-card row">
           <div class="info-card__image col-12 col-lg-4">
-            <img src="/assets/images/toyota.jpg" alt="">
+            <img src="{{carImage}}" alt="">
           </div>
           <div class="info-card__feature col-12 col-lg-4 d-flex flex-column justify-content-center">
             <div class="feature-name">
-            Toyota Land Cruiser <span class="grey">Comfort</span>
+              <span class="grey">BMW </span>{{carModel}} 
             </div>
             <div class="feature-items d-flex">
             <div class="feature-items__item d-flex flex-column">
@@ -258,7 +156,6 @@
             </div>
             </div>
           </form>
-        
           <div class="feature-items row">
             <div class="col-12 col-lg-8 d-flex flex-wrap justify-content-center justify-content-lg-start">
             <div class="feature-items__item d-flex flex-column">
@@ -288,15 +185,13 @@
             </div>
             <div class="col-12 col-lg-4">
             <div class="feature-items__item">
-              <button class="btn md-btn" (click)="openCallbackForm(callbackForm, carPrice, myForm.value.deposit, myForm.value.payment, myForm.value.period, paymentPerMounth)">Отправить заявку</button>
+              <button class="btn md-btn" (click)="openCallbackForm(callbackForm, carModel, carPrice, myForm.value.deposit, myForm.value.payment, myForm.value.period, paymentPerMounth)">Отправить заявку</button>
             </div>
             </div>
           </div>
           </div>
-        
         </div>
       </div>
-    
   </ng-template>
 
 </div>
@@ -304,7 +199,6 @@
 
 <ng-template #callbackForm let-modal>
   <div class="modal-header">
-    <!-- <h4 class="modal-title" id="modal-basic-title">Profile update</h4> -->
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>

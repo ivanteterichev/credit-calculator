@@ -24,14 +24,16 @@ export class AppComponent {
   car1 = new Car('/assets/images/bmw-1.png', 9, '3 серии', 1970000);
   car2 = new Car('/assets/images/bmw-2.png', 6, '5 серии', 2370000);
   car3 = new Car('/assets/images/bmw-3.png', 3, '7 серии', 3670000);
-  car4 = new Car('/assets/images/bmw-1.png', 9, '3 серии', 1970000);
-  car5 = new Car('/assets/images/bmw-2.png', 6, '5 серии', 2370000);
-  car6 = new Car('/assets/images/bmw-3.png', 3, '7 серии', 3670000);
+  car4 = new Car('/assets/images/bmw-1.png', 12, '3 серии', 1970990);
+  car5 = new Car('/assets/images/bmw-2.png', 7, '5 серии', 2370990);
+  car6 = new Car('/assets/images/bmw-3.png', 4, '7 серии', 3670990);
 
   cars: Car[] = [this.car1, this.car2, this.car3, this.car4, this.car5, this.car6];
 
   title = 'CreditCalculator';
   carPrice = 1970000;
+  carModel = '3 серии';
+  carImage = '/assets/images/bmw-1.png';
   minDeposit = 197000;
   minPayment = 10000;
   defaultPayment = 20000;
@@ -39,10 +41,11 @@ export class AppComponent {
   period = 120;
   maxPeriod = 240;
   pseudoMaxPeriod = 360;
-  carPrices = [1970000, 2370000, 3670000, 1970000, 2370000, 3670000];
   paymentPerMounth = null;
   interestRate = .118;
-  outputPrice(price) {
+  outputData(image, model, price) {
+    this.carImage = image;
+    this.carModel = model;
     this.carPrice = price;
     this.minDeposit = price * .1;
   };
@@ -52,8 +55,9 @@ export class AppComponent {
 
   constructor(private modalService: NgbModal) {}
 
-  openCallbackForm(content, sendCarPrice, sendDeposit, sendPayment, sendPeriod, sendPaymentPerMounth) {
+  openCallbackForm(content, sendCarModel, sendCarPrice, sendDeposit, sendPayment, sendPeriod, sendPaymentPerMounth) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    console.log('Модель автомобиля: ' + 'BMW ' + sendCarModel);
     console.log('Стоимость автомобиля: ' + sendCarPrice + ' ₽');
     console.log('Первоначальный взнос: ' + sendDeposit + ' ₽');
     console.log('Желаемый ежемесячный платеж: ' + sendPayment + ' ₽/мес');
